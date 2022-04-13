@@ -8,6 +8,7 @@ import axios from 'axios'
 
 function App() {
   const [punkListData, setPunkListData] = useState([])
+  const [selectedPunk, setSelectedPunk] = useState(0)
 // right now this isn't rendering for me because of error code 429 TOO MANY REQUESTS
 
   useEffect(() => {
@@ -23,8 +24,14 @@ function App() {
   return (
   <div className='app'>
    <Header />
-   <Main />
-    <Punklist punkListData={punkListData} />
+   {punkListData.length > 0 && (
+    <>
+   <Main punkListData={punkListData} />
+   <Punklist 
+      punkListData={punkListData} 
+      setSelectedPunk={setSelectedPunk} />
+    </>
+     )}
    </div>
   );
 }
