@@ -1,8 +1,10 @@
 import './App.css';
 import Header from './components/Header'
-import CollectionCard from './components/CollectionCard';
+import Punklist from './components/Punklist';
+import Main from './components/Main';
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+
 
 function App() {
   const [punkListData, setPunkListData] = useState([])
@@ -17,16 +19,12 @@ function App() {
 
     return getMyNfts()
   }, [])
-
+// this is where the data is being filtered from the open sea API call, which currently isn't working on mine
   return (
   <div className='app'>
    <Header />
-   <CollectionCard 
-      id={0} 
-      name={'Bandana Punk'} 
-      traits={[{'value': 7}]}
-      image='https://ipfs.thirdweb.com/ipfs/QmRGiD2K1G6h34f5BiEvNgyMdUey2FDh4nJc4WRoPXCAuC/0.png'
-    />
+   <Main />
+    <Punklist punkListData={punkListData} />
    </div>
   );
 }
