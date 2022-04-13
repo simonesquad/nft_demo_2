@@ -5,7 +5,7 @@ import moreIcon from '../assets/owner/more.png'
 import './Main.css'
 
 const Main = ({ selectedPunk, punkListData }) => {
-    const [activePunk, setActivePunk] = useState(punkListData[0])
+    const [activePunk, setActivePunk] = useState(punkListData[1])
     console.log(punkListData)
 
     useEffect(() => {
@@ -27,20 +27,22 @@ const Main = ({ selectedPunk, punkListData }) => {
 
             <div className='punkDetails' style={{ color: '#fff'}}>
                 <div className='title'>
-                    {acitvePunk.name}
+                    {activePunk.name}
+                    <span className='itemNumber'>#{activePunk.token_id}</span>
                 </div>
-                <span className='itemNumber'>#3</span>
             </div>
 
             <div className='owner'>
                 <div className='ownerImageContainer'>
                     <img 
-                        src={''}
+                        src={
+                            activePunk.owner.profile_img_url
+                        }
                         alt=''
                     />
                     <div className='ownerDetails'>
                         <div className='ownerNameAndHandle'>
-                            <div></div>
+                            <div>{activePunk.owner.address}</div>
 
                             <div className='ownerHandle'>@cleverprogrammer</div>
 
